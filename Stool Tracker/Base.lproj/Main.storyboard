@@ -33,9 +33,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3PY-6j-x48">
                                 <rect key="frame" x="16" y="197" width="343" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="375" id="3fb-4I-38C"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="p2V-8H-5Wv" detailTextLabel="atR-vh-7Kd" style="IBUITableViewCellStyleValue1" id="0xf-jL-K21">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
@@ -70,13 +67,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="44i-E8-PkB" firstAttribute="top" secondItem="3PY-6j-x48" secondAttribute="bottom" constant="38" id="689-iK-cpD"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="top" secondItem="DaE-Zs-H0Y" secondAttribute="bottom" constant="8" symbolic="YES" id="LMq-dE-gx5"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="197" id="Y16-H5-Hcf"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="centerX" secondItem="DaE-Zs-H0Y" secondAttribute="centerX" id="a7F-Ka-6Y1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3PY-6j-x48" secondAttribute="trailing" constant="16" id="esO-AG-phL"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="j3K-VN-vc3"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="centerX" secondItem="44i-E8-PkB" secondAttribute="centerX" id="kem-v6-qjd"/>
+                            <constraint firstItem="44i-E8-PkB" firstAttribute="top" secondItem="3PY-6j-x48" secondAttribute="bottom" constant="38" id="0NP-tO-REX"/>
+                            <constraint firstItem="DaE-Zs-H0Y" firstAttribute="centerX" secondItem="3PY-6j-x48" secondAttribute="centerX" id="7z6-DA-MlP"/>
+                            <constraint firstItem="3PY-6j-x48" firstAttribute="top" secondItem="DaE-Zs-H0Y" secondAttribute="bottom" constant="8" symbolic="YES" id="FOb-in-V6L"/>
+                            <constraint firstItem="3PY-6j-x48" firstAttribute="centerX" secondItem="44i-E8-PkB" secondAttribute="centerX" id="Spk-Up-Qfz"/>
+                            <constraint firstItem="3PY-6j-x48" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="T57-m4-Ghr"/>
+                            <constraint firstItem="DaE-Zs-H0Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XVv-ZR-E2a"/>
+                            <constraint firstItem="3PY-6j-x48" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="dCm-HK-icG"/>
+                            <constraint firstAttribute="bottom" secondItem="44i-E8-PkB" secondAttribute="bottom" constant="20" symbolic="YES" id="fHr-st-xBR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
