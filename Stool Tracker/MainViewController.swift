@@ -19,15 +19,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let dateFormatter = DateFormatter()
     
     @objc func refresh(){
-    //    data = [firstArray, ["4","5"]]
-        
         //clear table
         
         getData()
         print("refreshed")
         poopTable.reloadData()
-        self.refresher.endRefreshing()
+        //self.refresher.endRefreshing()
         
+        print ("count:" + String(sittingsDatesArr.count))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,15 +36,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
-        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/MM/yyyy"
-//        let day = dateFormatter.string(from: sittingsDatesArr[indexPath.row])
-//        let calendar = Calendar.current
-//        let hours = calendar.component(.hour, from: sittingsDatesArr[indexPath.row])
-//        let minutes = calendar.component(.minute, from: sittingsDatesArr[indexPath.row])
-//        let time = String(hours) + ":" + String(minutes)
-        //print (day + " at " + time)
         
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
@@ -68,8 +58,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // handle delete (by removing the data from your array and updating the tableview)
+            
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .long
+            // print (dateFormatter.string(from: sittingsDatesArr[indexPath.row]))
+            // print (String(indexPath.row))
+
+            // remove item from array
+            sittingsDatesArr.remove(at: indexPath.row)
+            
+            // remove item from core data
+            
+            
+            //refresh
+            refresh()
         }
     }
+    
     
     func writeData(sitDate: Date) {
         // setup CoreData
@@ -90,19 +95,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func buttonPress(_ sender: UIButton) {
         
-//        let date = Date()
         writeData(sitDate: Date()) //write new sitting to core data
 
-        sittingsDatesArr.removeAll() // erase everything in array
+//         sittingsDatesArr.removeAll() // erase everything in array
         
-        //getData() //reload the array from core data
+//        getData() //reload the array from core data
         
         // refresh the table view
-        refresher = UIRefreshControl()
-        refresher.attributedTitle = NSAttributedString(string: "pull to refresh")
+//        refresher = UIRefreshControl()
+//        refresher.attributedTitle = NSAttributedString(string: "pull to refresh")
+//
+//        refresher.addTarget(self, action: #selector(MainViewController.refresh), for: UIControlEvents.valueChanged)
+//        poopTable.addSubview(refresher)  //no longer required
         
-        refresher.addTarget(self, action: #selector(MainViewController.refresh), for: UIControlEvents.valueChanged)
-        //poopTable.addSubview(refresher)
         refresh()
     }
     
@@ -128,6 +133,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //
     func getData() {
+        
+        sittingsDatesArr.removeAll() // erase everything in array
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
