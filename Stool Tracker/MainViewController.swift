@@ -19,32 +19,40 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let dateFormatter = DateFormatter()
     
     @objc func refresh(){
-        //clear table
         
+        // refresh data in the array
         getData()
-        print("refreshed")
-        poopTable.reloadData()
-        //self.refresher.endRefreshing()
         
-        print ("count:" + String(sittingsDatesArr.count))
+        // display new count
+        print ("REFRESH: array refreshed, new count is :" + String(sittingsDatesArr.count))
+        
+        // refresh table view
+        poopTable.reloadData()        
     }
     
+    //MARK: Builtin tableView functions
+    
+    // return number of row in array
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sittingsDatesArr.count
     }
     
+    // display table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
         
+        // set date format to date only for left side of cell
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         let day = dateFormatter.string(from: sittingsDatesArr[indexPath.row])
 
+        // set date format to time only for right side of cell
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
         let time = dateFormatter.string(from: sittingsDatesArr[indexPath.row])
         
+        // set cell information
         cell.textLabel?.text = day
         cell.detailTextLabel?.text = time
         
@@ -55,27 +63,49 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return true
     }
     
+    //handle cell delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
-            
+  
             dateFormatter.dateStyle = .long
             dateFormatter.timeStyle = .long
-            // print (dateFormatter.string(from: sittingsDatesArr[indexPath.row]))
-            // print (String(indexPath.row))
+            
+            let date = sittingsDatesArr[indexPath.row]
+            print ("TABLEVIEW-EDIT: selected date: " + dateFormatter.string(from: date))
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
+            
+            request.predicate = NSPredicate(format:"date = %@", date as CVarArg)
+            
 
+            let result = try? context.fetch(request)
+            let resultData = result as! [NSManagedObject]
+
+            for object in resultData {
+                
+                context.delete(object)
+            }
+
+            do {
+                try context.save()
+                print("TABLEVIEW-EDIT: saved!")
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            } catch {
+
+            }
+            
             // remove item from array
-            sittingsDatesArr.remove(at: indexPath.row)
-            
-            // remove item from core data
-            
+            //sittingsDatesArr.remove(at: indexPath.row)
             
             //refresh
             refresh()
         }
     }
     
-    
+    // write new entry, note whole array (its already saved?)
     func writeData(sitDate: Date) {
         // setup CoreData
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -86,34 +116,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         do {
             try context.save()
-            print ("-----SAVED-----")
+            print ("WRITEDATA: -----SAVED-----")
         }
         catch {
             print ("XXXXX THERE WAS AN ERROR XXXXXXX")
         }
     }
     
+    // Handle button press
     @IBAction func buttonPress(_ sender: UIButton) {
-        
         writeData(sitDate: Date()) //write new sitting to core data
-
-//         sittingsDatesArr.removeAll() // erase everything in array
-        
-//        getData() //reload the array from core data
-        
-        // refresh the table view
-//        refresher = UIRefreshControl()
-//        refresher.attributedTitle = NSAttributedString(string: "pull to refresh")
-//
-//        refresher.addTarget(self, action: #selector(MainViewController.refresh), for: UIControlEvents.valueChanged)
-//        poopTable.addSubview(refresher)  //no longer required
-        
         refresh()
     }
     
+    // fill array before tableView is loaded
     override func viewWillAppear(_ animated: Bool) {
         getData()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,10 +151,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     
-    //
+    // data from CoreData
     func getData() {
-        
-        sittingsDatesArr.removeAll() // erase everything in array
+        // erase everything in array
+        sittingsDatesArr.removeAll()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -144,6 +164,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         request.returnsObjectsAsFaults = false
         
+        // loop through result (of fetch request) and append them to the array
         do {
             let results = try context.fetch(request)
             
@@ -157,7 +178,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             else {
-                print ("database is empty")
+                print ("GETDATA: database is empty")
             }
         }
         catch {
@@ -168,6 +189,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 extension UIViewController {
     
+    // configure what swipe gesture goes where.
     @objc func swipeAction(swipe:UISwipeGestureRecognizer) {
 
         switch swipe.direction.rawValue {
