@@ -138,10 +138,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup swipe gesture
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
-        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
-        self.view.addGestureRecognizer(leftSwipe)
+        // Setup swipe gesture - disabled for now
+//        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
+//        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
+//        self.view.addGestureRecognizer(leftSwipe)
 
     }
     
