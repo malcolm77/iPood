@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,9 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="44i-E8-PkB">
-                                <rect key="frame" x="176" y="610" width="23" height="37"/>
-                            </pageControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3PY-6j-x48">
                                 <rect key="frame" x="16" y="33" width="343" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,21 +61,33 @@
                                     <action selector="buttonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g3Q-Z6-aH6"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34x-HX-Xwe">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="action" id="wCS-8x-w3T">
+                                        <connections>
+                                            <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="MdP-oo-YV2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="44i-E8-PkB" secondAttribute="bottom" constant="20" symbolic="YES" id="8AJ-dY-Gsx"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="A1h-XI-E18"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Dgs-AP-cDF"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QuQ-t8-J3X"/>
-                            <constraint firstItem="DaE-Zs-H0Y" firstAttribute="top" secondItem="3PY-6j-x48" secondAttribute="bottom" constant="8" symbolic="YES" id="V5s-vz-fSA"/>
-                            <constraint firstItem="DaE-Zs-H0Y" firstAttribute="centerX" secondItem="44i-E8-PkB" secondAttribute="centerX" id="XKD-4s-mnz"/>
-                            <constraint firstItem="44i-E8-PkB" firstAttribute="top" secondItem="DaE-Zs-H0Y" secondAttribute="bottom" constant="25" id="fTN-9a-luZ"/>
-                            <constraint firstItem="3PY-6j-x48" firstAttribute="centerX" secondItem="DaE-Zs-H0Y" secondAttribute="centerX" id="pKF-J2-Ff5"/>
+                            <constraint firstItem="34x-HX-Xwe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="24W-L7-w8b"/>
+                            <constraint firstItem="34x-HX-Xwe" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="71v-So-ndh"/>
+                            <constraint firstItem="3PY-6j-x48" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="C1D-ny-bUt"/>
+                            <constraint firstItem="DaE-Zs-H0Y" firstAttribute="centerX" secondItem="34x-HX-Xwe" secondAttribute="centerX" id="Ej1-3t-DEU"/>
+                            <constraint firstItem="3PY-6j-x48" firstAttribute="centerX" secondItem="DaE-Zs-H0Y" secondAttribute="centerX" id="Fuh-bI-9dI"/>
+                            <constraint firstAttribute="trailing" secondItem="34x-HX-Xwe" secondAttribute="trailing" id="Nra-64-GOD"/>
+                            <constraint firstItem="34x-HX-Xwe" firstAttribute="top" secondItem="DaE-Zs-H0Y" secondAttribute="bottom" constant="38" id="Q0r-Gn-hF3"/>
+                            <constraint firstItem="3PY-6j-x48" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Qvv-Cj-yAu"/>
+                            <constraint firstItem="DaE-Zs-H0Y" firstAttribute="top" secondItem="3PY-6j-x48" secondAttribute="bottom" constant="8" symbolic="YES" id="svA-Ww-8Q3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="myView" destination="8bC-Xf-vdC" id="0LQ-Ec-6sI"/>
                         <outlet property="poopTable" destination="3PY-6j-x48" id="lsp-5Y-HbT"/>
                         <segue destination="b7U-g0-QjH" kind="presentation" identifier="SwipeRight" modalTransitionStyle="crossDissolve" id="hFG-Vb-HFl"/>
                     </connections>

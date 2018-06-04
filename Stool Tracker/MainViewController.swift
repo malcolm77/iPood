@@ -14,9 +14,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var refresher: UIRefreshControl!
     
     @IBOutlet weak var poopTable: UITableView!
+    @IBOutlet var myView: UIView!
+    
     
     var sittingsDatesArr = [Date]()
     let dateFormatter = DateFormatter()
+    
+    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+        shareData()
+    }
     
     @objc func refresh(){
         
@@ -184,6 +190,39 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         catch {
             print ("error")
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func shareData() {
+        var shareString = String()
+        var objectsToShare: [Any] = []
+        
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        
+        objectsToShare.append("My iPood dates:")
+        
+        if (sittingsDatesArr.count > 0) {
+            for item in sittingsDatesArr {
+                shareString = shareString + dateFormatter.string(from: item)
+                //objectsToShare.append(item + "\r\n") //add a carriage return
+                objectsToShare.append(dateFormatter.string(from: item)) //was item
+                //objectsToShare.append("test")
+            }
+        }
+        
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        //Excluded Activities
+        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+        
+        activityVC.popoverPresentationController?.sourceView = myView
+        self.present(activityVC, animated: true, completion: nil)
+        
+        
     }
 }
 

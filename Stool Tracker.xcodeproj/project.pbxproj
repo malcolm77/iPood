@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4A15D6920BBBB5100476818 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A15D6820BBBB5100476818 /* Model.swift */; };
 		D4DF4DDE20A476A3008BC709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */; };
 		D4DF4DE020A476A3008BC709 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DF4DDF20A476A3008BC709 /* MainViewController.swift */; };
 		D4DF4DE320A476A3008BC709 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4DF4DE120A476A3008BC709 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D4A15D6820BBBB5100476818 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D4DF4DDA20A476A3008BC709 /* Stool Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stool Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4DF4DDF20A476A3008BC709 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				D4DF4DE920A476A5008BC709 /* LaunchScreen.storyboard */,
 				D4DF4DEC20A476A5008BC709 /* Info.plist */,
 				D4DF4DE420A476A3008BC709 /* Stool_Tracker.xcdatamodeld */,
+				D4A15D6820BBBB5100476818 /* Model.swift */,
 			);
 			path = "Stool Tracker";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A15D6920BBBB5100476818 /* Model.swift in Sources */,
 				D4DF4DF320A47C2C008BC709 /* SecondViewController.swift in Sources */,
 				D4DF4DE020A476A3008BC709 /* MainViewController.swift in Sources */,
 				D4DF4DDE20A476A3008BC709 /* AppDelegate.swift in Sources */,
