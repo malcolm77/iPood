@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+var selectedDateString: String = ""
+
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var refresher: UIRefreshControl!
@@ -16,16 +18,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var poopTable: UITableView!
     @IBOutlet var myView: UIView!
     
-    
     var sittingsDatesArr = [Date]()
+
     let dateFormatter = DateFormatter()
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         shareData()
     }
     
-    @objc func refresh(){
-        
+    func refresh(){
         // refresh data in the array
         getData()
         
@@ -36,7 +37,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         poopTable.reloadData()        
     }
     
-    //MARK: Builtin tableView functions
+    //MARK: tableView functions
     
     // return number of row in array
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,6 +112,49 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // action when a row is selected.
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .long
+        
+        print (dateFormatter.string(from: sittingsDatesArr[indexPath.row]))
+        
+        selectedDateString = dateFormatter.string(from: sittingsDatesArr[indexPath.row])
+        
+        performSegue(withIdentifier: "gotodatepicker", sender: self)
+    }
+    
+    // Handle button press
+    @IBAction func buttonPress(_ sender: UIButton) {
+        writeData(sitDate: Date()) //write new sitting to core data
+        refresh()
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+////        let secondController = segue.destination as! SecondViewController
+////        secondController.myName = textName.text!
+//
+//    }
+    
+    //MARK: Main / View Functions
+    
+    // fill array before tableView is loaded
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    //MARK: Data functions
+    
     // write new entry, note whole array (its already saved?)
     func writeData(sitDate: Date) {
         // setup CoreData
@@ -128,34 +172,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print ("XXXXX THERE WAS AN ERROR XXXXXXX")
         }
     }
-    
-    // Handle button press
-    @IBAction func buttonPress(_ sender: UIButton) {
-        writeData(sitDate: Date()) //write new sitting to core data
-        refresh()
-    }
-    
-    // fill array before tableView is loaded
-    override func viewWillAppear(_ animated: Bool) {
-        getData()
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Setup swipe gesture - disabled for now
-//        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
-//        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
-//        self.view.addGestureRecognizer(leftSwipe)
-
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     
     // data from CoreData
     func getData() {
@@ -192,10 +208,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func shareData() {
         var shareString = String()
         var objectsToShare: [Any] = []
@@ -208,9 +220,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (sittingsDatesArr.count > 0) {
             for item in sittingsDatesArr {
                 shareString = shareString + dateFormatter.string(from: item)
-                //objectsToShare.append(item + "\r\n") //add a carriage return
-                objectsToShare.append(dateFormatter.string(from: item)) //was item
-                //objectsToShare.append("test")
+                objectsToShare.append(dateFormatter.string(from: item))
             }
         }
         
@@ -222,9 +232,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         activityVC.popoverPresentationController?.sourceView = myView
         self.present(activityVC, animated: true, completion: nil)
         
-        
     }
-}
+} //end of class
 
 extension UIViewController {
     

@@ -62,8 +62,8 @@
 			children = (
 				D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */,
 				D4DF4DDF20A476A3008BC709 /* MainViewController.swift */,
-				D4DF4DE120A476A3008BC709 /* Main.storyboard */,
 				D4DF4DF220A47C2C008BC709 /* SecondViewController.swift */,
+				D4DF4DE120A476A3008BC709 /* Main.storyboard */,
 				D4DF4DE720A476A5008BC709 /* Assets.xcassets */,
 				D4DF4DE920A476A5008BC709 /* LaunchScreen.storyboard */,
 				D4DF4DEC20A476A5008BC709 /* Info.plist */,
