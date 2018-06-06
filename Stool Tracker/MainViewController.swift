@@ -10,9 +10,11 @@ import UIKit
 import CoreData
 
 var selectedDateString: String = ""
+    var selectedDate: Date? = nil
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+
     var refresher: UIRefreshControl!
     
     @IBOutlet weak var poopTable: UITableView!
@@ -31,7 +33,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         getData()
         
         // display new count
-        print ("REFRESH: array refreshed, new count is :" + String(sittingsDatesArr.count))
+//        print ("REFRESH: array refreshed, new count is :" + String(sittingsDatesArr.count))
         
         // refresh table view
         poopTable.reloadData()        
@@ -115,14 +117,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // action when a row is selected.
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
+//        dateFormatter.dateStyle = .short
+//        dateFormatter.timeStyle = .medium
         
-        print (dateFormatter.string(from: sittingsDatesArr[indexPath.row]))
+//        print (dateFormatter.string(from: sittingsDatesArr[indexPath.row]))
+//        selectedDateString = dateFormatter.string(from: sittingsDatesArr[indexPath.row])
         
-        selectedDateString = dateFormatter.string(from: sittingsDatesArr[indexPath.row])
+        selectedDate = sittingsDatesArr[indexPath.row]
         
         performSegue(withIdentifier: "gotodatepicker", sender: self)
+        
+        // does not stop and wait for segue to come back.....
+        
+//        if let newDate = selectedDate {
+//            print (dateFormatter.string(from: newDate))
+//        }
+        
     }
     
     // Handle button press
@@ -132,9 +142,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-////        let secondController = segue.destination as! SecondViewController
-////        secondController.myName = textName.text!
-//
+//        let secondController = segue.destination as! SecondViewController
+//        if let newDate = selectedDate  {
+//            secondController.myDate = newDate
+//        }
 //    }
     
     //MARK: Main / View Functions
@@ -155,6 +166,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     //MARK: Data functions
     
+    func saveChanges() {
+        // setup CoreData
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        do {
+            try context.save()
+            print ("WRITEDATA: -----SAVED-----")
+        }
+        catch {
+            print ("XXXXX THERE WAS AN ERROR XXXXXXX")
+        }
+    }
+    
     // write new entry, note whole array (its already saved?)
     func writeData(sitDate: Date) {
         // setup CoreData
@@ -166,7 +191,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         do {
             try context.save()
-            print ("WRITEDATA: -----SAVED-----")
+//            print ("WRITEDATA: -----SAVED-----")
         }
         catch {
             print ("XXXXX THERE WAS AN ERROR XXXXXXX")

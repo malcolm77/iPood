@@ -10,16 +10,33 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    //var selectedDate = Date()
+    var myDate = Date()
     
     @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var newDatePicker: UIDatePicker!
     
+    var df = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let newDate = selectedDateString
-        testLabel.text = newDate
+//        let newDate = selectedDateString
+//        testLabel.text = newDate
+        
+//        df.dateStyle = .short
+//        df.timeStyle = .medium
+//
+//        df.dateFormat = "MM/dd/yy, h:mm:ss aa"                          // 7/6/06, 1:55:00 AM
+//        if let myDate = df.date(from: selectedDateString) {
+//            newDatePicker.setDate(myDate, animated: false) }
+//        else {
+//            print("--------error-------")
+//        }
+        
+        if let newDate = selectedDate {
+            newDatePicker.setDate(newDate, animated: false)
+        }
+    
         
     }
 
@@ -29,7 +46,11 @@ class SecondViewController: UIViewController {
     }
     
 
-    // MARK: - Navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let mainVC = segue.destination as! MainViewController
+//        mainVC.selectedDate = newDatePicker.date
+//
+//    }
 
 
 }
