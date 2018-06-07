@@ -46,11 +46,12 @@ class SecondViewController: UIViewController {
     }
     
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let mainVC = segue.destination as! MainViewController
+//        mainVC.newDate = newDatePicker.date
 //        mainVC.selectedDate = newDatePicker.date
-//
-//    }
+        newDate = newDatePicker.date
+    }
 
 
 }

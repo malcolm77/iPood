@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-var selectedDateString: String = ""
-    var selectedDate: Date? = nil
+// var selectedDateString: String = ""
+var selectedDate: Date? = nil
+var newDate: Date? = nil
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -106,33 +107,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             }
             
-            // remove item from array
-            //sittingsDatesArr.remove(at: indexPath.row)
-            
             //refresh
             refresh()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // action when a row is selected.
-//        dateFormatter.dateStyle = .short
-//        dateFormatter.timeStyle = .medium
-        
-//        print (dateFormatter.string(from: sittingsDatesArr[indexPath.row]))
-//        selectedDateString = dateFormatter.string(from: sittingsDatesArr[indexPath.row])
-        
         selectedDate = sittingsDatesArr[indexPath.row]
-        
         performSegue(withIdentifier: "gotodatepicker", sender: self)
-        
-        // does not stop and wait for segue to come back.....
-        
-//        if let newDate = selectedDate {
-//            print (dateFormatter.string(from: newDate))
-//        }
-        
     }
     
     // Handle button press
@@ -140,13 +122,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         writeData(sitDate: Date()) //write new sitting to core data
         refresh()
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let secondController = segue.destination as! SecondViewController
-//        if let newDate = selectedDate  {
-//            secondController.myDate = newDate
-//        }
-//    }
     
     //MARK: Main / View Functions
     
@@ -258,6 +233,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(activityVC, animated: true, completion: nil)
         
     }
+    
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+        // update something with the new value in selectedDate
+        
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .long
+        
+        if let returnedDate = newDate {
+            print(dateFormatter.string(from: returnedDate))
+        }
+    }
+    
+    
 } //end of class
 
 extension UIViewController {
