@@ -278,6 +278,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         refresh()
     }
     
+    @IBAction func trashBarButtonPressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Delete All", message: "Are you sure you want to delete all entries?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            os_log("NO pressed", log: myLog, type: .info)
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Yes", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            os_log("YES pressed", log: myLog, type: .info)
+        }))
+        
+
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
 } //end of class
 

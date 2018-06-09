@@ -56,6 +56,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34x-HX-Xwe">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
+                                    <barButtonItem systemItem="trash" id="PoJ-i6-VH9">
+                                        <connections>
+                                            <action selector="trashBarButtonPressed:" destination="BYZ-38-t0r" id="J2c-bJ-USg"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="AZW-2J-cJ0"/>
                                     <barButtonItem style="plain" systemItem="action" id="wCS-8x-w3T">
                                         <connections>
