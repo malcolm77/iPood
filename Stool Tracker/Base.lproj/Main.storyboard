@@ -116,21 +116,35 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgd-xw-Zk6">
-                                <rect key="frame" x="0.0" y="461" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="435" width="375" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Update"/>
                                 <connections>
                                     <segue destination="diX-4G-mAT" kind="unwind" unwindAction="unwindToThisViewControllerWithSegue:" id="VuZ-wZ-Lms"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaR-t9-e2Q">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="auG-Wr-EeO">
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="5AE-PA-Efh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yc6-wi-V1s" firstAttribute="leading" secondItem="h4E-HG-bMt" secondAttribute="leading" id="6TT-tT-bwf"/>
                             <constraint firstAttribute="trailing" secondItem="yc6-wi-V1s" secondAttribute="trailing" id="AFH-RI-xeb"/>
-                            <constraint firstItem="yc6-wi-V1s" firstAttribute="leading" secondItem="xgd-xw-Zk6" secondAttribute="leading" id="BcV-qE-oIy"/>
-                            <constraint firstItem="xbQ-Ep-bew" firstAttribute="bottom" secondItem="xgd-xw-Zk6" secondAttribute="bottom" constant="176" id="ETT-Od-kPr"/>
-                            <constraint firstItem="yc6-wi-V1s" firstAttribute="trailing" secondItem="xgd-xw-Zk6" secondAttribute="trailing" id="pny-OU-DbS"/>
+                            <constraint firstItem="xgd-xw-Zk6" firstAttribute="leading" secondItem="XaR-t9-e2Q" secondAttribute="leading" id="Kki-Wc-RWx"/>
+                            <constraint firstItem="XaR-t9-e2Q" firstAttribute="bottom" secondItem="xbQ-Ep-bew" secondAttribute="bottom" id="LlU-RA-3Ii"/>
+                            <constraint firstAttribute="bottom" secondItem="xgd-xw-Zk6" secondAttribute="bottom" constant="199" id="N5t-S2-aN7"/>
+                            <constraint firstItem="xgd-xw-Zk6" firstAttribute="trailing" secondItem="yc6-wi-V1s" secondAttribute="trailing" id="bsT-aN-0pF"/>
                             <constraint firstItem="yc6-wi-V1s" firstAttribute="top" secondItem="xbQ-Ep-bew" secondAttribute="top" constant="108" id="qHJ-JC-gsh"/>
+                            <constraint firstItem="xgd-xw-Zk6" firstAttribute="leading" secondItem="yc6-wi-V1s" secondAttribute="leading" id="wqp-C5-kRa"/>
+                            <constraint firstItem="xgd-xw-Zk6" firstAttribute="trailing" secondItem="XaR-t9-e2Q" secondAttribute="trailing" id="yyL-Kq-AWe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xbQ-Ep-bew"/>
                     </view>
