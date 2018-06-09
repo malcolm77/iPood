@@ -13,7 +13,7 @@ import os
 // var selectedDateString: String = ""
 var selectedDate: Date? = nil
 var newDate: Date? = nil
-let myLog = OSLog(subsystem: "com.malcolmchalmers.ipood", category: "error")
+let myLog = OSLog(subsystem: "com.malcolmchalmers.ipood", category: "DefaultLog")
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -132,10 +132,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -243,10 +239,43 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .long
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
         
-        if let returnedDate = newDate {
-            print(dateFormatter.string(from: returnedDate))
+//        if let returnedDate = newDate {
+//            print("unwindToThisViewController:" + dateFormatter.string(from: returnedDate))
+//        }
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
+        
+        do {
+            let results = try context.fetch(request)
+            
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    if let sitDate = result.value(forKey: "date") as? Date {
+                        
+                        if sitDate == selectedDate {
+                            
+                            result.setValue (newDate, forKey: "date")
+                            
+                            do {
+                                try context.save()
+                            }
+                            catch {
+                                os_log("error getting data", log: myLog, type: .error)
+                            }
+                        }
+                    }
+                }
+            }
         }
+        catch  {
+            os_log("error getting data", log: myLog, type: .error)
+        }
+    
+        // refresh the table view
+        refresh()
     }
     
     
