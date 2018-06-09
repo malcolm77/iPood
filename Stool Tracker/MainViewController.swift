@@ -8,21 +8,21 @@
 
 import UIKit
 import CoreData
+import os
 
 // var selectedDateString: String = ""
 var selectedDate: Date? = nil
 var newDate: Date? = nil
+let myLog = OSLog(subsystem: "com.malcolmchalmers.ipood", category: "error")
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-
-    var refresher: UIRefreshControl!
+//    var refresher: UIRefreshControl!
     
     @IBOutlet weak var poopTable: UITableView!
     @IBOutlet var myView: UIView!
-    
-    var sittingsDatesArr = [Date]()
 
+    var sittingsDatesArr = [Date]()
     let dateFormatter = DateFormatter()
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
@@ -34,7 +34,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         getData()
         
         // display new count
-//        print ("REFRESH: array refreshed, new count is :" + String(sittingsDatesArr.count))
+//       print ("REFRESH: array refreshed, new count is :" + String(sittingsDatesArr.count))
         
         // refresh table view
         poopTable.reloadData()        
@@ -81,7 +81,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             dateFormatter.timeStyle = .long
             
             let date = sittingsDatesArr[indexPath.row]
-            print ("TABLEVIEW-EDIT: selected date: " + dateFormatter.string(from: date))
+//            print ("TABLEVIEW-EDIT: selected date: " + dateFormatter.string(from: date))
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
@@ -132,6 +132,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,10 +152,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         do {
             try context.save()
-            print ("WRITEDATA: -----SAVED-----")
+            os_log("WRITEDATA: -----SAVED-----", log: myLog, type: .info)
         }
         catch {
-            print ("XXXXX THERE WAS AN ERROR XXXXXXX")
+            os_log ("XXXXX THERE WAS AN ERROR XXXXXXX", log: myLog, type: .error)
         }
     }
     
@@ -166,10 +170,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         do {
             try context.save()
-//            print ("WRITEDATA: -----SAVED-----")
+            os_log ("WRITEDATA: -----SAVED-----", log: myLog, type: .info)
         }
         catch {
-            print ("XXXXX THERE WAS AN ERROR XXXXXXX")
+            os_log("XXXXX THERE WAS AN ERROR XXXXXXX", log: myLog, type: .error) // ("XXXXX THERE WAS AN ERROR XXXXXXX")
         }
     }
     
@@ -200,11 +204,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             else {
-                print ("GETDATA: database is empty")
+                os_log("GETDATA: database is empty", log: myLog, type: .info)
             }
         }
         catch {
-            print ("error")
+            os_log("XXXXX THERE WAS AN ERROR XXXXXXX", log: myLog, type: .error)
         }
     }
     

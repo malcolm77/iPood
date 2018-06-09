@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3PY-6j-x48">
-                                <rect key="frame" x="16" y="33" width="343" height="500"/>
+                                <rect key="frame" x="16" y="33" width="343" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="p2V-8H-5Wv" detailTextLabel="atR-vh-7Kd" style="IBUITableViewCellStyleValue1" id="0xf-jL-K21">
@@ -53,14 +53,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ZCU-yX-b4Y"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaE-Zs-H0Y">
-                                <rect key="frame" x="155" y="541" width="64" height="44"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="iPood"/>
-                                <connections>
-                                    <action selector="buttonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g3Q-Z6-aH6"/>
-                                </connections>
-                            </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34x-HX-Xwe">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -72,6 +64,15 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaE-Zs-H0Y">
+                                <rect key="frame" x="162" y="565" width="50" height="36"/>
+                                <accessibility key="accessibilityConfiguration" hint="Use when you poop" label="iPood"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="iPood"/>
+                                <connections>
+                                    <action selector="buttonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g3Q-Z6-aH6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -81,9 +82,9 @@
                             <constraint firstItem="DaE-Zs-H0Y" firstAttribute="centerX" secondItem="34x-HX-Xwe" secondAttribute="centerX" id="Ej1-3t-DEU"/>
                             <constraint firstItem="3PY-6j-x48" firstAttribute="centerX" secondItem="DaE-Zs-H0Y" secondAttribute="centerX" id="Fuh-bI-9dI"/>
                             <constraint firstAttribute="trailing" secondItem="34x-HX-Xwe" secondAttribute="trailing" id="Nra-64-GOD"/>
-                            <constraint firstItem="34x-HX-Xwe" firstAttribute="top" secondItem="DaE-Zs-H0Y" secondAttribute="bottom" constant="38" id="Q0r-Gn-hF3"/>
+                            <constraint firstItem="34x-HX-Xwe" firstAttribute="top" secondItem="DaE-Zs-H0Y" secondAttribute="bottom" constant="22" id="Q0r-Gn-hF3"/>
                             <constraint firstItem="3PY-6j-x48" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Qvv-Cj-yAu"/>
-                            <constraint firstItem="DaE-Zs-H0Y" firstAttribute="top" secondItem="3PY-6j-x48" secondAttribute="bottom" constant="8" symbolic="YES" id="svA-Ww-8Q3"/>
+                            <constraint firstItem="DaE-Zs-H0Y" firstAttribute="top" secondItem="3PY-6j-x48" secondAttribute="bottom" constant="24" id="svA-Ww-8Q3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
