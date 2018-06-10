@@ -20,24 +20,9 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let newDate = selectedDateString
-//        testLabel.text = newDate
-        
-//        df.dateStyle = .short
-//        df.timeStyle = .medium
-//
-//        df.dateFormat = "MM/dd/yy, h:mm:ss aa"                          // 7/6/06, 1:55:00 AM
-//        if let myDate = df.date(from: selectedDateString) {
-//            newDatePicker.setDate(myDate, animated: false) }
-//        else {
-//            print("--------error-------")
-//        }
-        
         if let newDate = selectedDate {
             newDatePicker.setDate(newDate, animated: false)
         }
-    
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,9 +32,6 @@ class SecondViewController: UIViewController {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let mainVC = segue.destination as! MainViewController
-//        mainVC.newDate = newDatePicker.date
-//        mainVC.selectedDate = newDatePicker.date
         newDate = newDatePicker.date
     }
 

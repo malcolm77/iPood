@@ -13,14 +13,15 @@ import os
 var selectedDate: Date? = nil
 var newDate: Date? = nil
 let myLog = OSLog(subsystem: "com.malcolmchalmers.ipood", category: "DefaultLog")
+var sittingsDatesArr = [Date]()
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var poopTable: UITableView!
     @IBOutlet var myView: UIView!
 
-    var sittingsDatesArr = [Date]()
     let df = DateFormatter()
+    let coreData = CoreDataHandler()
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         shareData()
@@ -28,14 +29,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: Helper Functions
     
-    func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
     func refresh(){
         // refresh data in the array
-        getData()
+        coreData.getData()
         
         // refresh table view
         poopTable.reloadData()        
@@ -82,7 +78,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             df.timeStyle = .long
             
             let date = sittingsDatesArr[indexPath.row]
-            let context = getContext()
+            let context = coreData.getContext()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
             
             request.predicate = NSPredicate(format:"date = %@", date as CVarArg)
@@ -91,7 +87,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let resultData = result as! [NSManagedObject]
 
             for object in resultData {
-                
                 context.delete(object)
             }
 
@@ -115,7 +110,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Handle button press
     @IBAction func buttonPress(_ sender: UIButton) {
-        writeData(sitDate: Date()) //write new sitting to core data
+        coreData.writeData(sitDate: Date()) //write new sitting to core data
         refresh()
     }
     
@@ -123,7 +118,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // fill array before tableView is loaded
     override func viewWillAppear(_ animated: Bool) {
-        getData()
+        coreData.getData()
     }
     
     override func viewDidLoad() {
@@ -138,61 +133,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: Data functions
     
     func saveChanges() {
-        let context = getContext()
+        let context = coreData.getContext()
         do {
             try context.save()
             os_log("WRITEDATA: -----SAVED-----", log: myLog, type: .info)
         }
         catch {
             os_log ("XXXXX THERE WAS AN ERROR XXXXXXX", log: myLog, type: .error)
-        }
-    }
-    
-    func writeData(sitDate: Date) {
-        let context = getContext()
-        let newSitting = NSEntityDescription.insertNewObject(forEntityName: "Sittings", into: context)
-        
-        newSitting.setValue(sitDate, forKey: "date")
-        
-        do {
-            try context.save()
-            os_log ("WRITEDATA: -----SAVED-----", log: myLog, type: .info)
-        }
-        catch {
-            os_log("XXXXX THERE WAS AN ERROR XXXXXXX", log: myLog, type: .error)
-        }
-    }
-    
-    // data from CoreData
-    func getData() {
-        // erase everything in array
-        sittingsDatesArr.removeAll()
-
-        let context = getContext()
-        //get data from CoreData
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
-        
-        request.returnsObjectsAsFaults = false
-        
-        // loop through result (of fetch request) and append them to the array
-        do {
-            let results = try context.fetch(request)
-            
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    // print ("results")
-                    if let sittingDate = result.value(forKey: "date") as? Date {
-                        //add data to array
-                        sittingsDatesArr.append(sittingDate)
-                    }
-                }
-            }
-            else {
-                os_log("GETDATA: database is empty", log: myLog, type: .info)
-            }
-        }
-        catch {
-            os_log("XXXXX THERE WAS AN ERROR XXXXXXX", log: myLog, type: .error)
         }
     }
     
@@ -219,15 +166,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         activityVC.popoverPresentationController?.sourceView = myView
         self.present(activityVC, animated: true, completion: nil)
-        
+
     }
     
     @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
         
+        // Update entry with new date from second view controller
         df.dateStyle = .long
         df.timeStyle = .long
         
-        let context = getContext()
+        let context = coreData.getContext()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
         
         do {
@@ -266,7 +214,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             alert.dismiss(animated: true, completion: nil)
             os_log("YES pressed", log: myLog, type: .info)
             
-            let context = self.getContext()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
             
