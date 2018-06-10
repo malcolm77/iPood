@@ -70,4 +70,55 @@ class CoreDataHandler {
             os_log("XXXXX THERE WAS AN ERROR XXXXXXX", log: myLog, type: .error)
         }
     }
+    
+    func deleteAllData() -> Bool {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+            return true
+        } catch {
+            os_log("errror deleting all data", log: myLog, type: .error)
+            return false
+        }
+    }
+    
+    func updateEntry(oldDate: Date, newDate: Date) {
+        let context = getContext()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
+        
+        do {
+            let results = try context.fetch(request)
+            
+            if results.count > 0 {
+                for result in results as! [NSManagedObject] {
+                    if let sitDate = result.value(forKey: "date") as? Date {
+                        
+                        if sitDate == oldDate {
+                            
+                            result.setValue (newDate, forKey: "date")
+                            
+                            do {
+                                try context.save()
+                            }
+                            catch {
+                                os_log("error getting data", log: myLog, type: .error)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch  {
+            os_log("error getting data", log: myLog, type: .error)
+        }
+    }
 }
+
+
+

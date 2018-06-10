@@ -175,36 +175,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         df.dateStyle = .long
         df.timeStyle = .long
         
-        let context = coreData.getContext()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
-        
-        do {
-            let results = try context.fetch(request)
-            
-            if results.count > 0 {
-                for result in results as! [NSManagedObject] {
-                    if let sitDate = result.value(forKey: "date") as? Date {
-                        
-                        if sitDate == selectedDate {
-                            
-                            result.setValue (newDate, forKey: "date")
-                            
-                            do {
-                                try context.save()
-                            }
-                            catch {
-                                os_log("error getting data", log: myLog, type: .error)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        catch  {
-            os_log("error getting data", log: myLog, type: .error)
+        if let firstDate = selectedDate, let secondDate = newDate {
+            coreData.updateEntry(oldDate:firstDate, newDate:secondDate)
+        } else {
+            return
         }
     
         refresh()
+    }
+    
+    func deleteAll() {
+        if coreData.deleteAllData() {
+            os_log("All good", log: myLog, type: .info)
+        } else {
+            os_log("error deleting data", log: myLog, type: .error)
+        }
+        
     }
     
     @IBAction func trashBarButtonPressed(_ sender: UIBarButtonItem) {
@@ -214,17 +200,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             alert.dismiss(animated: true, completion: nil)
             os_log("YES pressed", log: myLog, type: .info)
             
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-            
-            do {
-                try context.execute(deleteRequest)
-                try context.save()
-            } catch {
-                os_log("errror deleting all data", log: myLog, type: .error)
-            }
+            self.deleteAll()
             
             self.refresh()
         }))
