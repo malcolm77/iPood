@@ -17,7 +17,7 @@ let myLog = OSLog(subsystem: "com.malcolmchalmers.ipood", category: "DefaultLog"
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-//    var refresher: UIRefreshControl!
+
     
     @IBOutlet weak var poopTable: UITableView!
     @IBOutlet var myView: UIView!
@@ -280,18 +280,33 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func trashBarButtonPressed(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Delete All", message: "Are you sure you want to delete all entries?", preferredStyle: .alert)
+
+        
+        alert.addAction(UIAlertAction.init(title: "Yes", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            os_log("YES pressed", log: myLog, type: .info)
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                os_log("errror deleting all data", log: myLog, type: .error)
+            }
+            
+            self.refresh()
+        }))
+        
         
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {(action) in
             alert.dismiss(animated: true, completion: nil)
             os_log("NO pressed", log: myLog, type: .info)
         }))
-        
-        alert.addAction(UIAlertAction.init(title: "Yes", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            os_log("YES pressed", log: myLog, type: .info)
-        }))
-        
-
         
         self.present(alert, animated: true, completion: nil)
     }
