@@ -184,29 +184,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         refresh()
     }
     
-    func deleteAll() {
+    func deleteAll(alert: UIAlertAction) {
         if coreData.deleteAllData() {
             os_log("All good", log: myLog, type: .info)
         } else {
             os_log("error deleting data", log: myLog, type: .error)
         }
         
+        refresh()
     }
     
     @IBAction func trashBarButtonPressed(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Delete All", message: "Are you sure you want to delete all entries?", preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction.init(title: "Yes", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            os_log("YES pressed", log: myLog, type: .info)
-            
-            self.deleteAll()
-            
-            self.refresh()
-        }))
         
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {(action) in
-            alert.dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction.init(title: "Yes", style: .default, handler: deleteAll ))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
             os_log("NO pressed", log: myLog, type: .info)
         }))
         
