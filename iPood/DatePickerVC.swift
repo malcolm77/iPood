@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class DatePickerVC: UIViewController {
     
     var myDate = Date()
     

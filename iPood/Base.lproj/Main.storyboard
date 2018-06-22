@@ -14,7 +14,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Stool_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="iPood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="-74.400000000000006" y="64.31784107946028"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Date PickerVC-->
         <scene sceneID="xb2-tT-J8x">
             <objects>
-                <viewController id="b7U-g0-QjH" customClass="SecondViewController" customModule="Stool_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="b7U-g0-QjH" customClass="DatePickerVC" customModule="iPood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h4E-HG-bMt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,6 +161,21 @@
                 <exit id="diX-4G-mAT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="916" y="63.418290854572717"/>
+        </scene>
+        <!--New EntryVC-->
+        <scene sceneID="r7e-o7-7h9">
+            <objects>
+                <viewController id="9h5-vS-YNv" customClass="NewEntryVC" customModule="iPood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NSb-k9-aJy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Xhx-Gn-Ebb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Az-ru-LZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="582" y="777"/>
         </scene>
     </scenes>
 </document>

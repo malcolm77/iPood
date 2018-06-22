@@ -114,6 +114,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         refresh()
     }
     
+//    func buttonPress(_ sender: UIButton) {
+//        coreData.writeData(sitDate: Date()) //write new sitting to core data
+//        refresh()
+//    }
+    
     //MARK: Main / View Functions
     
     // fill array before tableView is loaded
