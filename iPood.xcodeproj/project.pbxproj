@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D448472F20CCACAF004C09A4 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448472E20CCACAF004C09A4 /* CoreDataHandler.swift */; };
+		D491A64720DDB736007E823F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D491A64620DDB736007E823F /* Default-568h@2x.png */; };
 		D4DF4DDE20A476A3008BC709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */; };
 		D4DF4DE020A476A3008BC709 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DF4DDF20A476A3008BC709 /* MainViewController.swift */; };
 		D4DF4DE320A476A3008BC709 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4DF4DE120A476A3008BC709 /* Main.storyboard */; };
@@ -19,7 +20,8 @@
 
 /* Begin PBXFileReference section */
 		D448472E20CCACAF004C09A4 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
-		D4DF4DDA20A476A3008BC709 /* Stool Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stool Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D491A64620DDB736007E823F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D4DF4DDA20A476A3008BC709 /* iPood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4DF4DDF20A476A3008BC709 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D4DF4DE220A476A3008BC709 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,7 +46,8 @@
 		D4DF4DD120A476A3008BC709 = {
 			isa = PBXGroup;
 			children = (
-				D4DF4DDC20A476A3008BC709 /* Stool Tracker */,
+				D491A64620DDB736007E823F /* Default-568h@2x.png */,
+				D4DF4DDC20A476A3008BC709 /* iPood */,
 				D4DF4DDB20A476A3008BC709 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +55,12 @@
 		D4DF4DDB20A476A3008BC709 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D4DF4DDA20A476A3008BC709 /* Stool Tracker.app */,
+				D4DF4DDA20A476A3008BC709 /* iPood.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D4DF4DDC20A476A3008BC709 /* Stool Tracker */ = {
+		D4DF4DDC20A476A3008BC709 /* iPood */ = {
 			isa = PBXGroup;
 			children = (
 				D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */,
@@ -70,15 +73,15 @@
 				D4DF4DE420A476A3008BC709 /* Stool_Tracker.xcdatamodeld */,
 				D448472E20CCACAF004C09A4 /* CoreDataHandler.swift */,
 			);
-			path = "Stool Tracker";
+			path = iPood;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D4DF4DD920A476A3008BC709 /* Stool Tracker */ = {
+		D4DF4DD920A476A3008BC709 /* iPood */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4DF4DEF20A476A5008BC709 /* Build configuration list for PBXNativeTarget "Stool Tracker" */;
+			buildConfigurationList = D4DF4DEF20A476A5008BC709 /* Build configuration list for PBXNativeTarget "iPood" */;
 			buildPhases = (
 				D4DF4DD620A476A3008BC709 /* Sources */,
 				D4DF4DD720A476A3008BC709 /* Frameworks */,
@@ -88,9 +91,9 @@
 			);
 			dependencies = (
 			);
-			name = "Stool Tracker";
+			name = iPood;
 			productName = "Stool Tracker";
-			productReference = D4DF4DDA20A476A3008BC709 /* Stool Tracker.app */;
+			productReference = D4DF4DDA20A476A3008BC709 /* iPood.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +111,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D4DF4DD520A476A3008BC709 /* Build configuration list for PBXProject "Stool Tracker" */;
+			buildConfigurationList = D4DF4DD520A476A3008BC709 /* Build configuration list for PBXProject "iPood" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D4DF4DD920A476A3008BC709 /* Stool Tracker */,
+				D4DF4DD920A476A3008BC709 /* iPood */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4DF4DEB20A476A5008BC709 /* LaunchScreen.storyboard in Resources */,
+				D491A64720DDB736007E823F /* Default-568h@2x.png in Resources */,
 				D4DF4DE820A476A5008BC709 /* Assets.xcassets in Resources */,
 				D4DF4DE320A476A3008BC709 /* Main.storyboard in Resources */,
 			);
@@ -294,7 +298,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V378X53389;
-				INFOPLIST_FILE = "Stool Tracker/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iPood/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -313,7 +317,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V378X53389;
-				INFOPLIST_FILE = "Stool Tracker/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iPood/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -329,7 +333,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D4DF4DD520A476A3008BC709 /* Build configuration list for PBXProject "Stool Tracker" */ = {
+		D4DF4DD520A476A3008BC709 /* Build configuration list for PBXProject "iPood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4DF4DED20A476A5008BC709 /* Debug */,
@@ -338,7 +342,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4DF4DEF20A476A5008BC709 /* Build configuration list for PBXNativeTarget "Stool Tracker" */ = {
+		D4DF4DEF20A476A5008BC709 /* Build configuration list for PBXNativeTarget "iPood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4DF4DF020A476A5008BC709 /* Debug */,

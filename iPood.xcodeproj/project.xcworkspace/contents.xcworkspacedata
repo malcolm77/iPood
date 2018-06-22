@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Stool Tracker.xcodeproj">
+      location = "self:/Users/malcolm/Documents/Xcode/iPood/iPood.xcodeproj">
    </FileRef>
 </Workspace>

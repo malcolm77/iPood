@@ -17,7 +17,7 @@ extension Sittings {
         return NSFetchRequest<Sittings>(entityName: "Sittings")
     }
 
-    @NSManaged public var color: Int16
+    @NSManaged public var color: String
     @NSManaged public var date: NSDate?
     @NSManaged public var firmness: Int16
     @NSManaged public var id: Int32
