@@ -73,6 +73,8 @@ class CoreDataHandler {
     
     func deleteAllData() -> Bool {
         
+        sittingsDatesArr.removeAll()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sittings")
