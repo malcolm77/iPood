@@ -10,6 +10,7 @@
 		D448472F20CCACAF004C09A4 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448472E20CCACAF004C09A4 /* CoreDataHandler.swift */; };
 		D491A64720DDB736007E823F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D491A64620DDB736007E823F /* Default-568h@2x.png */; };
 		D491A64920DDBB64007E823F /* NewEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D491A64820DDBB64007E823F /* NewEntryVC.swift */; };
+		D4A2A84E20DE0B8000BBED6D /* EditDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2A84D20DE0B8000BBED6D /* EditDateViewController.swift */; };
 		D4DF4DDE20A476A3008BC709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */; };
 		D4DF4DE020A476A3008BC709 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DF4DDF20A476A3008BC709 /* MainViewController.swift */; };
 		D4DF4DE320A476A3008BC709 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4DF4DE120A476A3008BC709 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		D448472E20CCACAF004C09A4 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		D491A64620DDB736007E823F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D491A64820DDBB64007E823F /* NewEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryVC.swift; sourceTree = "<group>"; };
+		D4A2A84D20DE0B8000BBED6D /* EditDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateViewController.swift; sourceTree = "<group>"; };
 		D4DF4DDA20A476A3008BC709 /* iPood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4DF4DDF20A476A3008BC709 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				D4DF4DDD20A476A3008BC709 /* AppDelegate.swift */,
 				D4DF4DDF20A476A3008BC709 /* MainViewController.swift */,
 				D4DF4DF220A47C2C008BC709 /* DatePickerVC.swift */,
+				D4A2A84D20DE0B8000BBED6D /* EditDateViewController.swift */,
 				D491A64820DDBB64007E823F /* NewEntryVC.swift */,
 				D448472E20CCACAF004C09A4 /* CoreDataHandler.swift */,
 				D4DF4DE120A476A3008BC709 /* Main.storyboard */,
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A2A84E20DE0B8000BBED6D /* EditDateViewController.swift in Sources */,
 				D491A64920DDBB64007E823F /* NewEntryVC.swift in Sources */,
 				D448472F20CCACAF004C09A4 /* CoreDataHandler.swift in Sources */,
 				D4DF4DF320A47C2C008BC709 /* DatePickerVC.swift in Sources */,

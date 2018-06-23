@@ -105,7 +105,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedDate = sittingsDatesArr[indexPath.row]
-        performSegue(withIdentifier: "gotodatepicker", sender: self)
+//        performSegue(withIdentifier: "gotodatepicker", sender: self)
+        
+        performSegue(withIdentifier: "newDatePicker", sender: self)
     }
     
     // Handle button press
