@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--iPood-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="iPood" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3PY-6j-x48">
-                                <rect key="frame" x="16" y="20" width="343" height="516"/>
+                                <rect key="frame" x="16" y="64" width="343" height="472"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="p2V-8H-5Wv" detailTextLabel="atR-vh-7Kd" style="IBUITableViewCellStyleValue1" id="0xf-jL-K21">
@@ -93,7 +93,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="egd-W8-AJU"/>
+                    <navigationItem key="navigationItem" title="iPood" id="egd-W8-AJU"/>
                     <connections>
                         <outlet property="myView" destination="8bC-Xf-vdC" id="0LQ-Ec-6sI"/>
                         <outlet property="poopTable" destination="3PY-6j-x48" id="lsp-5Y-HbT"/>
@@ -134,7 +134,7 @@
                                 <items>
                                     <barButtonItem systemItem="cancel" id="auG-Wr-EeO">
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="5AE-PA-Efh"/>
+                                            <segue destination="oKk-cI-aj8" kind="show" id="Gc7-w7-Ycb"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -142,8 +142,12 @@
                             <navigationBar contentMode="scaleToFill" backIndicatorImage="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="09a-jL-IJE">
                                 <rect key="frame" x="0.0" y="30" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="Eia-TH-Xek">
-                                        <barButtonItem key="leftBarButtonItem" title="go back" id="3qx-df-uaz"/>
+                                    <navigationItem title="Date and Time" id="Eia-TH-Xek">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="3qx-df-uaz" userLabel="Back">
+                                            <connections>
+                                                <segue destination="oKk-cI-aj8" kind="show" id="gg7-jb-I67"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -245,7 +249,6 @@
         <image name="Default.png" width="320" height="568"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hFG-Vb-HFl"/>
-        <segue reference="5AE-PA-Efh"/>
+        <segue reference="gg7-jb-I67"/>
     </inferredMetricsTieBreakers>
 </document>
